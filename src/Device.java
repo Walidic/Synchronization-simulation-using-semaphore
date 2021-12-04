@@ -18,7 +18,8 @@ public class Device extends Thread{
         return type;
     }
 
-    public void connect (){
-
+    @Override
+    public void run(){
+        System.out.println("("+name+")"+" "+"("+type+")"+" "+"Arrived");
     }
 }
