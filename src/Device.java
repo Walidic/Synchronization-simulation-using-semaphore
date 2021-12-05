@@ -1,16 +1,21 @@
 public class Device extends Thread{
     private String name;
     private String type;
+    private Router router;
 
     public void setDeviceName(String inputName){
-        name  = inputName;
+        this.name  = inputName;
     }
 
     public void SetDeviceType(String inputType){
-        type = inputType;
+        this.type = inputType;
     }
 
-    public String getDeviveName(){
+    public void setRouter(Router router){
+        this.router = router;
+    }
+
+    public String getDeviceName(){
         return name;
     }
 
@@ -18,9 +23,12 @@ public class Device extends Thread{
         return type;
     }
 
+    public Router getRouter(){
+        return router;
+    }
+
     @Override
     public void run(){
 
-        System.out.println("("+name+")"+" "+"("+type+")"+" "+"Arrived");
     }
 }
