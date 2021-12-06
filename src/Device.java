@@ -12,51 +12,51 @@ public class Device extends Thread {
         this.setRouter(router);
     }
 
-    public void setDeviceName(String inputName) {
+    public synchronized void setDeviceName(String inputName) {
         this.name = inputName;
     }
 
-    public void SetDeviceType(String inputType) {
+    public synchronized void SetDeviceType(String inputType) {
         this.type = inputType;
     }
 
-    public void setRouter(Router inputRouter) {
+    public synchronized void setRouter(Router inputRouter) {
         this.router = inputRouter;
     }
 
-    public void setConnectionID(int ID) {
+    public synchronized void setConnectionID(int ID) {
         this.connectionID = ID;
     }
 
-    public String getDeviceName() {
+    public synchronized String getDeviceName() {
         return name;
     }
 
-    public String getDeviceType() {
+    public synchronized String getDeviceType() {
         return type;
     }
 
-    public Router getRouter() {
+    public synchronized Router getRouter() {
         return router;
     }
 
-    public int getConnectionID() {
+    public synchronized int getConnectionID() {
         return connectionID;
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         router.getSemaphore().wait(this);
-        this.connectionID = router.occupyConnection(this);
-        System.out.println("Connection " + this.connectionID + ": " + this.name + " Occupied");
+        router.occupyConnection(this);
+        System.out.println("Connection " + getConnectionID() + ": " + this.name + " Occupied");
         networkActivity();
         router.releaseConnection(this);
         router.getSemaphore().semaphoreSignal();
     }
 
-    public void networkActivity() {
+    public synchronized void networkActivity() {
 
-        System.out.println("Connection " + this.connectionID + ": " + this.name + " Performs online activity");
+        System.out.println("Connection " + getConnectionID() + ": " + this.name + " Performs online activity");
         Random rand = new Random();
         int n = rand.nextInt(15000);
         try {

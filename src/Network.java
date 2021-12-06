@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Network {
     public static void main(String[] args) throws Exception {
@@ -20,8 +21,12 @@ public class Network {
         }
 
         for (int i = 0; i < numOfDevices; i++) {
-            sleep(100);
             devices[i].start();
+            try {
+                TimeUnit.MILLISECONDS.sleep(100);
+            } catch (Exception e) {
+                System.out.println("Oops! Something went wrong!");
+            }
         }
     }
 }
