@@ -24,7 +24,7 @@ public class Semaphore {
 
     public synchronized void semaphoreSignal() {
         value++;
-        if (value < 0) {
+        if (value <= 0) {
             notify();
         }
     }
