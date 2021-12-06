@@ -5,7 +5,7 @@ public class Semaphore {
         value = inputValue;
     }
 
-    public synchronized void semaphoreWait(Device device) {
+    public synchronized void wait(Device device) {
         value--;
         if (value < 0) {
             System.out.println(
