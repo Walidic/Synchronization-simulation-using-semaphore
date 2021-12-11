@@ -1,5 +1,4 @@
 import java.util.Random;
-
 public class Device extends Thread {
     private String name;
     private String type;
