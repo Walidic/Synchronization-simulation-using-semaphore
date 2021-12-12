@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Network",
+            "request": "launch",
+            "mainClass": "Network",
+            "projectName": "Lma-omak-te3mlk-router-fel-beit_8dbd5f0c"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
